@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsCalculator</title>
+    <link rel="stylesheet" href="./src/style.css">
+
+    <script src="https://kit.fontawesome.com/2e440afa55.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="header">
+        <h1>JavaScript Calculator</h1>
+    </header>
+    <main id="main">
+        <section id="main-section" class="main-sec">
+            <div class="container">
+                <div id="full-display" class="container-display">
+                    <h3 id="sub-display" class="subDisplay"></h3>
+                    <h2 id="main-display" class="mainDisplay">0</h2>
+                </div>
+                <div class="container-btn">
+                    <div class="history-btn">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <button id="factorial" class="btn" type="button" value="!">!</button>
+                    <button id="clear" class="btn" type="button" value="C">C</button>
+                    <button id="delete" class="btn" type="button" value="del">del</button>
+                    <button id="sqrt" class="btn" type="button" value="sqrt">√x</button>
+                    <button id="power" class="btn" type="button" value="exp">x²</button>
+                    <button id="percent" class="btn" type="button" value="%">%</button>
+                    <button id="multiply" class="btn" type="button" value="x">x</button>
+                    <button id="7" class="btn" type="button" value="7">7</button>
+                    <button id="8" class="btn" type="button" value="8">8</button>
+                    <button id="9" class="btn" type="button" value="9">9</button>
+                    <button id="divide" class="btn" type="button" value="/">/</button>
+                    <button id="4" class="btn" type="button" value="4">4</button>
+                    <button id="5" class="btn" type="button" value="5">5</button>
+                    <button id="6" class="btn" type="button" value="6">6</button>
+                    <button id="minus" class="btn" type="button" value="-">-</button>
+                    <button id="1" class="btn" type="button" value="1">1</button>
+                    <button id="2" class="btn" type="button" value="2">2</button>
+                    <button id="3" class="btn" type="button" value="3">3</button>
+                    <button id="sum" class="btn" type="button" value="+">+</button>
+                    <button id="negative" class="btn" type="button" value="+/-">+/-</button>
+                    <button id="0" class="btn" type="button" value="0">0</button>
+                    <button id="decimal" class="btn" type="button" value=".">.</button>
+                    <button id="equals" class="btn" type="button" value="=">=</button>
+                </div>
+                <div id="history" class="display-history">
+                    <div id="structure" class="operations"></div>
+                </div>
+            </div>
+            <div id="author" class="credits">
+                <p>by jvitoralb</p>
+            </div>
+            <section id="socials-section" class="icons">
+                <a target="_blank" href="https://github.com/jvitoralb">
+                    <i class="fa-brands fa-github fa-2xl icon"></i>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/in/jvitor-albuquerque/">
+                    <i class="fa-brands fa-linkedin-in fa-2xl icon"></i>
+                </a>
+            </section>
+        </section>
+    </main>
+
+    <script src="./src/index.js"></script>
+</body>
+
+</html>
