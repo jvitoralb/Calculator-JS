@@ -1,4 +1,4 @@
-### This is Calculator
+### This is a Calculator
 
 My first project with JavaScript.
 
