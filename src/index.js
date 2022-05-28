@@ -236,7 +236,7 @@ function getKeysTarget(e) {
     let targetKey = e.key;
     const updateKeys = { '*': 'x', 'Enter': '=', 'Backspace': 'del' };
 
-    if (e.code === 'Enter' || e.code === 'Space') e.preventDefault();
+    if (targetKey === 'Enter' || e.code === 'Space') e.preventDefault();
     if (updateKeys[targetKey]) {
         targetKey = updateKeys[targetKey];
     }
@@ -252,8 +252,7 @@ document.addEventListener('keydown', getKeysTarget);
 
 const show = () => {
     const parentDiv = document.querySelector('#structure');
-
-    calsHistory.forEach(array => {
+    calsHistory.reverse().forEach(array => {
         if (!array.includes(true)) {
             if (array.includes('exp') || array.includes('sqrt')) {
                 array.find((elem, i) => {
