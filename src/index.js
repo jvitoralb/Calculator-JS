@@ -233,12 +233,13 @@ function getTarget(e) {
 document.addEventListener('click', getTarget);
 
 function getKeysTarget(e) {
-    const updateKeys = { '*': 'x', 'Enter': '=', 'Backspace': 'del' };
     let targetKey = e.key;
+    const updateKeys = { '*': 'x', 'Enter': '=', 'Backspace': 'del' };
 
-    if (e.keyCode === 13 || e.keyCode === 32) e.preventDefault();
-    if (updateKeys[targetKey]) targetKey = updateKeys[targetKey];
-
+    if (e.code === 'Enter' || e.code === 'Space') e.preventDefault();
+    if (updateKeys[targetKey]) {
+        targetKey = updateKeys[targetKey];
+    }
     if ((targetKey >= 0 && e.key !== ' ') || calTools[targetKey] || calOperations[targetKey]) {
         handleValues(targetKey);
         if (showHistory) {
