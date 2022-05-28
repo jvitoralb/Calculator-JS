@@ -2,6 +2,7 @@ const calculatorDisplay = document.querySelector('.mainDisplay');
 const calSubDisplay = document.querySelector('.subDisplay');
 const historyDisplay = document.querySelector('.display-history');
 const historyBtn = document.querySelector('.history-btn');
+const parentDiv = document.querySelector('#structure');
 const calsHistory = [];
 const mainDisplay = [];
 const subDisplay = [];
@@ -35,8 +36,8 @@ function clear(val) {
 }
 
 function registerShow() {
-    calsHistory.push(subDisplay.slice());
-    calsHistory.at(-1).push(mainDisplay.slice().join(''), `${result}`);
+    calsHistory.unshift(subDisplay.slice());
+    calsHistory.at(0).push(mainDisplay.slice().join(''), `${result}`);
     clear();
     if (result === 0) {
         return displayValue('0')
@@ -227,7 +228,7 @@ function getTarget(e) {
             toggleHistory()
         }
     }
-    
+
 }
 
 document.addEventListener('click', getTarget);
@@ -250,25 +251,21 @@ function getKeysTarget(e) {
 
 document.addEventListener('keydown', getKeysTarget);
 
-const show = () => {
-    const parentDiv = document.querySelector('#structure');
-    calsHistory.reverse().forEach(array => {
-        if (!array.includes(true)) {
-            if (array.includes('exp') || array.includes('sqrt')) {
-                array.find((elem, i) => {
-                    if (elem === 'exp') array.splice(i, 1, '²');
-                    if (elem === 'sqrt') {
-                        array.splice(i, 1);
-                        array.unshift('√');
-                    }
-                });
-            }
-            let operation = document.createElement('h5');
-            parentDiv.appendChild(operation).innerHTML = array.slice(0, -1).join('');
-            let opResult = document.createElement('h4');
-            parentDiv.appendChild(opResult).innerHTML = array.slice(-1).join('');
-            array.push(true);
+const createHistory = () => {
+    calsHistory.forEach(array => {
+        if (array.includes('exp') || array.includes('sqrt')) {
+            array.find((elem, i) => {
+                if (elem === 'exp') array.splice(i, 1, '²');
+                if (elem === 'sqrt') {
+                    array.splice(i, 1);
+                    array.unshift('√');
+                }
+            });
         }
+        let operation = document.createElement('h5');
+        let result = document.createElement('h4');
+        parentDiv.appendChild(operation).innerHTML = array.slice(0, -1).join('');
+        parentDiv.appendChild(result).innerHTML = array.slice(-1).join('');
     });
 }
 
@@ -276,10 +273,13 @@ function toggleHistory() {
     if (!showHistory) {
         historyDisplay.classList.add('open');
         showHistory = true;
-        show();
+        createHistory();
     } else {
         historyDisplay.classList.remove('open');
         showHistory = false;
+        while (parentDiv.firstChild) {
+            parentDiv.removeChild(parentDiv.firstChild);
+        }
     }
 }
 
